@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <locale.h>
-#include<math.h>
+#include <math.h>
+#include "ploschad.cpp"
+#include "perimetr.cpp"
+
 
 /*Написать функции, вычисляющие периметр и площадь треугольника по значениям длин трёх его сторон. Разместить их в отдельном модуле 
 (отличном от того, где располагается функция main( )). Ввести с консоли значения длин сторон треугольника (с проверкой на корректность
@@ -19,21 +22,24 @@
 	б) Площадь по формуле S = sqrt (p* (p-a)*(p-b)*(p-c))   */
 	
 	
-	float perimetr(float, float, float);					//Обозначаем, что в программе будет функция perimetr, которая принимает три значения
-	
+
 	
 	int main() {
 	setlocale(LC_ALL, "Rus");
 	
 	float p, S;		//Объявляем периметр и площадь
 	float a, b ,c;	//Объявляем три переменных, которые будут содержать длины сторон
+	
+	printf("Введите стороны трегуольника\n");
 	scanf("%f\n%f\n%f", &a, &b, &c);						//Вводим с консоли три значения сторон
-	printf("%.3f %.3f %.3f", a, b ,c);
+	printf("%.3f %.3f %.3f\n", a, b ,c);
 	
 	
 	if(a < (b + c) && b < (a + c) && c < (a + b)) {			//Проверяем может ли существовать такой треугольник
 		p = perimetr(a, b ,c);
+		S = plowad (a, b, c);
 		printf("Периметр = %.3f\n", p);	
+		printf("Площадь = %.3f\n", S);
 	} else {
 		printf("Треугольник не существует\n");
 	}
@@ -42,9 +48,4 @@
 	
 	}
 	
-	float perimetr(float x, float y, float z) {
-		float per, plo;
-		per=x+y+z;
-		return (per);
-	}
 
